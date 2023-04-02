@@ -13,8 +13,7 @@
       <h2>Virtual Library</h2>
       <button class="add_btn">Add book</button>
       <div class="newBookInput popup">
-        <form class="newBook_form" action="#">
-          <!--title, author, pages, haveRead-->
+        <form id="newBook_Form" action="/script.js">
           <div>
             <label for="title">Title</label>
             <input type="text" id="input_title" name="title" required />
@@ -25,8 +24,9 @@
             <label for="pages">Pages</label>
             <input type="number" id="input_pages" name="pages" required />
             <label for="read">Completed?</label>
-            <input type="checkbox" id="input_read" name="read" required />
+            <input type="checkbox" id="input_read" name="read" value="yes" />
           </div>
+          <input id="submitBtn" type="submit" value="reset form" />
         </form>
       </div>
     </header>
