@@ -7,6 +7,7 @@ const formSubmit = document.querySelector("#submitBtn");
 const newBookForm = document.querySelector("#newBook_Form");
 //main
 const titleList = document.querySelector("#titleList");
+const bookshelfItems = document.querySelector("#bookshelfItems");
 //title, author, pages, read
 const formTitle = document.querySelector("#input_title");
 const formAuthor = document.querySelector("#input_author");
@@ -45,6 +46,7 @@ function addBookToLibrary() {
   myLibrary.push(newBook);
   newBookForm.reset();
   createLibraryList();
+  addBooksToShelf();
 }
 
 //VALIDATE NEW BOOK FORM, SUBMIT AND CLEAR FORM
@@ -100,7 +102,6 @@ function validate() {
 
 //CREATE LIST TO GET A SELECTION OF EACH BOOK IN THE LIBRARY
 function createLibraryList() {
-  var listBookTitle = document.querySelector(".listBookTitle");
   while (titleList.hasChildNodes()) {
     titleList.removeChild(titleList.firstChild);
   }
@@ -122,3 +123,33 @@ function createLibraryList() {
 }
 
 //BOOKSHELF TO GET A QUICK GLIMPSE OF BOOKS IN LIBRARY
+function addBooksToShelf() {
+  while (bookshelfItems.hasChildNodes()) {
+    bookshelfItems.removeChild(bookshelfItems.firstChild);
+  }
+
+  for (i = 0; i < myLibrary.length; i++) {
+    var bookshelfItem = document.createElement("div");
+    bookshelfItem.classList.add("bookshelfItem");
+    bookshelfItem.appendChild(document.createTextNode(myLibrary[i].title));
+    if (myLibrary[i].pages < 100) {
+      bookshelfItem.style.height = "1rem";
+    } else if (myLibrary[i].pages < 200) {
+      bookshelfItem.style.height = "1.5rem";
+    } else if (myLibrary[i].pages < 300) {
+      bookshelfItem.style.height = "2rem";
+    } else if (myLibrary[i].pages < 400) {
+      bookshelfItem.style.height = "2.5rem";
+    } else if (myLibrary[i].pages < 500) {
+      bookshelfItem.style.height = "3rem";
+    } else if (myLibrary[i].pages < 600) {
+      bookshelfItem.style.height = "3.4rem";
+    } else if (myLibrary[i].pages < 800) {
+      bookshelfItem.style.height = "3.8rem";
+    } else {
+      bookshelfItem.style.height = "4rem";
+    }
+
+    bookshelfItems.appendChild(bookshelfItem);
+  }
+}
