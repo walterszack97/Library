@@ -9,6 +9,10 @@ const formTitle = document.querySelector("#input_title");
 const formAuthor = document.querySelector("#input_author");
 const formPages = document.querySelector("#input_pages");
 const formRead = document.querySelector("#input_read");
+//form validation
+const titleValidate = document.querySelector("#titleValidate");
+const authorValidate = document.querySelector("#authorValidate");
+const pagesValidate = document.querySelector("#pagesValidate");
 
 //FUNCTIONS
 let myLibrary = [];
@@ -24,9 +28,9 @@ function Book(title, author, pages, haveRead) {
 function addBookToLibrary() {
   event.preventDefault();
   let title = formTitle.value;
-  let author = formTitle.value;
-  let pages = formTitle.value;
-  let read = formTitle.value;
+  let author = formAuthor.value;
+  let pages = formPages.value;
+  let read = formRead.value;
 
   newBook = new Book(title, author, pages, read);
   myLibrary.push(newBook);
@@ -36,13 +40,51 @@ function addBookToLibrary() {
 
 function printBooks() {
   for (i = 0; i < myLibrary.length; i++) {
-    console.log(myLibrary[i].haveRead + "\n");
+    console.log(myLibrary[i].title + "\n" + myLibrary[i].author);
   }
 }
 
 //EVENT HANDLERS
-formSubmit.addEventListener("click", addBookToLibrary);
 newBook_btn.addEventListener("click", (event) => {
   newBook_btn.style.display = "none";
   popupForm.style.display = "block";
 });
+
+function validateTitle() {
+  if (formTitle.value == "") {
+    titleValidate.textContent = "Enter a title";
+    formTitle.style.border = "solid 1px red";
+  } else {
+    titleValidate.textContent = "";
+    formTitle.style.border = "solid 1px black";
+  }
+}
+function validateAuthor() {
+  if (formAuthor.value == "") {
+    authorValidate.textContent = "Enter an author";
+    formAuthor.style.border = "solid 1px red";
+  } else {
+    authorValidate.textContent = "";
+    formAuthor.style.border = "solid 1px black";
+  }
+}
+function validatePages() {
+  if (formPages.value <= 0) {
+    pagesValidate.textContent = "Pages must be > 0";
+    formPages.style.border = "solid 1px red";
+  } else {
+    pagesValidate.textContent = "";
+    formPages.style.border = "solid 1px black";
+  }
+}
+
+function validate() {
+  if (formTitle.value == "" || formAuthor.value == "" || formPages.value <= 0) {
+    validateTitle();
+    validateAuthor();
+    validatePages();
+    return false;
+  } else {
+    addBookToLibrary();
+  }
+}

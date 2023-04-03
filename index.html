@@ -16,17 +16,43 @@
         <form id="newBook_Form" action="/script.js">
           <div>
             <label for="title">Title</label>
-            <input type="text" id="input_title" name="title" required />
+            <input
+              type="text"
+              id="input_title"
+              name="title"
+              onblur="return validateTitle()"
+              required
+            />
+            <p id="titleValidate"></p>
             <label for="author">Author</label>
-            <input type="text" id="input_author" name="author" required />
+            <input
+              type="text"
+              id="input_author"
+              name="author"
+              onblur="return validateAuthor()"
+              required
+            />
+            <p id="authorValidate"></p>
           </div>
           <div>
             <label for="pages">Pages</label>
-            <input type="number" id="input_pages" name="pages" required />
+            <input
+              type="number"
+              id="input_pages"
+              name="pages"
+              onblur="return validatePages()"
+              required
+            />
+            <p id="pagesValidate"></p>
             <label for="read">Completed?</label>
             <input type="checkbox" id="input_read" name="read" value="yes" />
           </div>
-          <input id="submitBtn" type="submit" value="reset form" />
+          <input
+            id="submitBtn"
+            type="submit"
+            value="Submit"
+            onclick="return validate()"
+          />
         </form>
       </div>
     </header>
