@@ -36,7 +36,7 @@ function addBookToLibrary() {
   let title = formTitle.value;
   let author = formAuthor.value;
   let pages = formPages.value;
-  let read = formRead.value;
+  let read = formRead.checked;
 
   newBook = new Book(title, author, pages, read);
   myLibrary.push(newBook);
@@ -46,7 +46,13 @@ function addBookToLibrary() {
 
 function printBooks() {
   for (i = 0; i < myLibrary.length; i++) {
-    console.log(myLibrary[i].title + "\n" + myLibrary[i].author);
+    console.log(
+      myLibrary[i].title +
+        "\n" +
+        myLibrary[i].author +
+        "\n" +
+        myLibrary[i].haveRead
+    );
   }
 }
 
@@ -100,3 +106,5 @@ function validate() {
     clearForm();
   }
 }
+
+//BOOKSHELF TO GET A QUICK GLIMPSE OF BOOKS IN LIBRARY
