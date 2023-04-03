@@ -14,6 +14,12 @@ const titleValidate = document.querySelector("#titleValidate");
 const authorValidate = document.querySelector("#authorValidate");
 const pagesValidate = document.querySelector("#pagesValidate");
 
+//EVENT HANDLERS
+newBook_btn.addEventListener("click", (event) => {
+  newBook_btn.style.display = "none";
+  popupForm.style.display = "block";
+});
+
 //FUNCTIONS
 let myLibrary = [];
 let newBook;
@@ -44,12 +50,7 @@ function printBooks() {
   }
 }
 
-//EVENT HANDLERS
-newBook_btn.addEventListener("click", (event) => {
-  newBook_btn.style.display = "none";
-  popupForm.style.display = "block";
-});
-
+//VALIDATE NEW BOOK FORM, SUBMIT AND CLEAR FORM
 function validateTitle() {
   if (formTitle.value == "") {
     titleValidate.textContent = "Enter a title";
@@ -78,6 +79,16 @@ function validatePages() {
   }
 }
 
+function clearForm() {
+  formTitle.textContent = "";
+  formAuthor.textContent = "";
+  formPages.textContent = "";
+  formRead.textContent = "";
+
+  newBook_btn.style.display = "grid";
+  popupForm.style.display = "none";
+}
+
 function validate() {
   if (formTitle.value == "" || formAuthor.value == "" || formPages.value <= 0) {
     validateTitle();
@@ -86,5 +97,6 @@ function validate() {
     return false;
   } else {
     addBookToLibrary();
+    clearForm();
   }
 }
