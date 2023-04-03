@@ -1,9 +1,12 @@
 //GET DOM ELEMENTS
+//header
 const newBook_btn = document.querySelector(".add_btn");
 const newInput_popup = document.querySelector(".newBookInput");
 const popupForm = document.querySelector(".popup");
 const formSubmit = document.querySelector("#submitBtn");
 const newBookForm = document.querySelector("#newBook_Form");
+//main
+const titleList = document.querySelector("#titleList");
 //title, author, pages, read
 const formTitle = document.querySelector("#input_title");
 const formAuthor = document.querySelector("#input_author");
@@ -41,19 +44,7 @@ function addBookToLibrary() {
   newBook = new Book(title, author, pages, read);
   myLibrary.push(newBook);
   newBookForm.reset();
-  printBooks();
-}
-
-function printBooks() {
-  for (i = 0; i < myLibrary.length; i++) {
-    console.log(
-      myLibrary[i].title +
-        "\n" +
-        myLibrary[i].author +
-        "\n" +
-        myLibrary[i].haveRead
-    );
-  }
+  createLibraryList();
 }
 
 //VALIDATE NEW BOOK FORM, SUBMIT AND CLEAR FORM
@@ -104,6 +95,29 @@ function validate() {
   } else {
     addBookToLibrary();
     clearForm();
+  }
+}
+
+//CREATE LIST TO GET A SELECTION OF EACH BOOK IN THE LIBRARY
+function createLibraryList() {
+  var listBookTitle = document.querySelector(".listBookTitle");
+  while (titleList.hasChildNodes()) {
+    titleList.removeChild(titleList.firstChild);
+  }
+
+  for (i = 0; i < myLibrary.length; i++) {
+    var listBookTitle = document.createElement("li");
+    listBookTitle.classList.add("listBookTitle");
+    listBookTitle.appendChild(document.createTextNode(myLibrary[i].title));
+    titleList.appendChild(listBookTitle);
+
+    console.log(
+      myLibrary[i].title +
+        "\n" +
+        myLibrary[i].author +
+        "\n" +
+        myLibrary[i].haveRead
+    );
   }
 }
 
