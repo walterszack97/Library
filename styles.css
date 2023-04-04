@@ -5,10 +5,19 @@ ul {
   margin: 0;
 }
 body {
+  height: 100vh;
   background-color: rgb(203, 199, 180);
+
+  display: grid;
+  grid-template-areas:
+    "header"
+    "body"
+    "footer";
+  grid-template-rows: 20% 50% 20%;
 }
 header {
-  padding: 20px;
+  grid-area: header;
+  padding: 30px;
   display: grid;
   justify-content: center;
 }
@@ -18,14 +27,13 @@ h2 {
   padding: 20px;
 }
 #mainContainer {
-  height: 50vh;
-
+  grid-area: body;
   box-shadow: 0 -4px 0 2px rgb(80, 80, 80);
   border-top: solid;
   border-image: url(imgs/bgoutline.png) 100% 0 0 0 / 30px round;
 }
 #mainBtmBrdr {
-  height: 55px;
+  grid-area: footer;
   width: 100%;
 
   box-shadow: 0 4px 0 2px rgb(80, 80, 80);
