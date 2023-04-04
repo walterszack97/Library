@@ -7,30 +7,31 @@ ul {
 body {
   height: 100vh;
   background-color: rgb(203, 199, 180);
-
+  gap: 20px;
   display: grid;
   grid-template-areas:
     "header"
     "body"
     "footer";
-  grid-template-rows: 20% 50% 20%;
+  grid-template-rows: minmax(200px, 10%) minmax(400px, 40%) 20%;
 }
 header {
   grid-area: header;
   padding: 30px;
   display: grid;
   justify-content: center;
+  margin-bottom: 20px;
+  display: grid;
 }
 h2 {
   justify-content: center;
   display: grid;
-  padding: 20px;
 }
 #mainContainer {
   grid-area: body;
   box-shadow: 0 -4px 0 2px rgb(80, 80, 80);
   border-top: solid;
-  border-image: url(imgs/bgoutline.png) 100% 0 0 0 / 30px round;
+  border-image: url(imgs/bgoutline.png) 100% 0 0 0 / min(30px) round;
 }
 #mainBtmBrdr {
   grid-area: footer;
@@ -39,6 +40,7 @@ h2 {
   box-shadow: 0 4px 0 2px rgb(80, 80, 80);
   border-bottom: solid;
   border-image: url(imgs/bgBtmOutline.png) 0 0 100% 0 / 30px round;
+  min-height: 90px;
 }
 
 .newBook_form {
@@ -49,6 +51,7 @@ h2 {
 .popup {
   padding: 20px;
   display: none;
+  height: auto;
 }
 .bookshelfItem {
   height: 1rem;
