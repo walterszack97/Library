@@ -1,24 +1,51 @@
+ul {
+  list-style-type: none;
+}
 * {
   margin: 0;
 }
 body {
-  background-color: rgb(254, 240, 220);
+  background-color: rgb(203, 199, 180);
 }
 header {
+  padding: 20px;
   display: grid;
   justify-content: center;
-  background-color: rgb(196, 223, 247);
 }
+h2 {
+  justify-content: center;
+  display: grid;
+  padding: 20px;
+}
+#mainContainer {
+  height: 50vh;
+
+  box-shadow: 0 -4px 0 2px rgb(80, 80, 80);
+  border-top: solid;
+  border-image: url(imgs/bgoutline.png) 100% 0 0 0 / 30px round;
+}
+#mainBtmBrdr {
+  height: 55px;
+  width: 100%;
+
+  box-shadow: 0 4px 0 2px rgb(80, 80, 80);
+  border-bottom: solid;
+  border-image: url(imgs/bgBtmOutline.png) 0 0 100% 0 / 30px round;
+}
+
 .newBook_form {
   display: grid;
   padding: 20px;
   gap: 10px;
 }
 .popup {
+  padding: 20px;
   display: none;
 }
-h2 {
-  justify-content: center;
-  display: grid;
-  padding: 20px;
+.bookshelfItem {
+  height: 1rem;
+  width: 30%;
+  background-color: white;
+  border: 1px solid black;
+  border-bottom: 0;
 }
