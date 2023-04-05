@@ -80,12 +80,6 @@ h2 {
   gap: 2px;
 }
 #newBook_Form > div > input {
-  border-style: solid;
-  border-image-slice: 24 24 24 24;
-  border-image-width: 0 0 0 10px;
-  border-image-repeat: round;
-  border-image-source: url(imgs/popupBG.png);
-  border-image-outset: 8.5;
   box-shadow: 3px 2px 2px rgba(22, 21, 18, 0.4); /*offset x, y, blur, spread, color*/
   background-color: rgba(112, 107, 91, 0.2);
 }
@@ -107,4 +101,13 @@ h2 {
 
 input:focus {
   outline: none;
+  border-style: solid;
+  border-image-width: 45px 0 0 65px;
+  border-image-source: url(imgs/nier.svg);
+  border-image-outset: 0 25;
+}
+
+input:not(:focus) {
+  outline: none;
+  border: none;
 }
