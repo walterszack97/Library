@@ -22,6 +22,7 @@ const pagesValidate = document.querySelector("#pagesValidate");
 newBook_btn.addEventListener("click", (event) => {
   newBook_btn.style.display = "none";
   popupForm.style.display = "grid";
+  formTitle.focus();
 });
 
 //FUNCTIONS
@@ -79,7 +80,7 @@ function clearForm() {
   formRead.textContent = "";
 
   newBook_btn.style.display = "grid";
-  popupForm.style.display = "grid";
+  popupForm.style.display = "none";
 }
 
 function validate() {
