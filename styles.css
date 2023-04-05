@@ -38,6 +38,10 @@ h2 {
   position: relative;
   grid-area: body;
 
+  grid-template-areas: "listContainer bookshelfContainer";
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+
   background-color: #b3af9c;
 
   border-image-slice: 55 27 55 27;
@@ -46,9 +50,13 @@ h2 {
   border-style: solid;
   border-image-source: url(imgs/bgoutline.png);
 }
-#footer {
-  grid-area: footer;
+#listContainer {
+  grid-area: listContainer;
 }
+#bookshelfContainer {
+  grid-area: bookshelfContainer;
+}
+
 .popup {
   display: none;
   position: absolute;
@@ -110,4 +118,8 @@ input:focus {
 input:not(:focus) {
   outline: none;
   border: none;
+}
+
+#footer {
+  grid-area: footer;
 }
