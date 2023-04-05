@@ -12,12 +12,8 @@ body {
   grid-template-areas:
     "header"
     "body"
-    "bottomBorder"
     "footer";
-  grid-template-rows: minmax(200px, 10%) minmax(100px, 70%) 60px minmax(
-      100px,
-      20%
-    );
+  grid-template-rows: minmax(100px, 20%) minmax(300px, 70%) minmax(100px, 20%);
 }
 header {
   grid-area: header;
@@ -47,18 +43,12 @@ h2 {
 #footer {
   grid-area: footer;
 }
-.newBook_form {
-  display: grid;
-  padding: 20px;
-  gap: 10px;
-}
-
 .popup {
   display: none;
   position: absolute;
   padding: 25px;
   width: 60%;
-  height: 50%;
+  height: minmax(10px, 50%);
   background-color: #cbc7b4;
 
   align-self: center;
@@ -70,18 +60,21 @@ h2 {
   border-image-repeat: round;
   border-image-source: url(imgs/popupBG.png);
 }
-.newBookInput {
-  grid-template-areas:
-    "label"
-    "input";
-  grid-template-columns: 10000px;
+#newBook_Form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
-.newBook_form > label {
-  grid-area: label;
+#newBook_Form > div {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
 }
-.newBook_form > input {
-  grid-area: input;
+#newBook_Form > input[type="submit"] {
+  width: 100px;
+  align-self: flex-end;
 }
+
 .bookshelfItem {
   height: 1rem;
   width: 30%;
