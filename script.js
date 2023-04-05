@@ -21,7 +21,7 @@ const pagesValidate = document.querySelector("#pagesValidate");
 //EVENT HANDLERS
 newBook_btn.addEventListener("click", (event) => {
   newBook_btn.style.display = "none";
-  popupForm.style.display = "block";
+  popupForm.style.display = "grid";
 });
 
 //FUNCTIONS
@@ -53,28 +53,22 @@ function addBookToLibrary() {
 function validateTitle() {
   if (formTitle.value == "") {
     titleValidate.textContent = "Enter a title";
-    formTitle.style.border = "solid 1px red";
   } else {
     titleValidate.textContent = "";
-    formTitle.style.border = "solid 1px black";
   }
 }
 function validateAuthor() {
   if (formAuthor.value == "") {
     authorValidate.textContent = "Enter an author";
-    formAuthor.style.border = "solid 1px red";
   } else {
     authorValidate.textContent = "";
-    formAuthor.style.border = "solid 1px black";
   }
 }
 function validatePages() {
   if (formPages.value <= 0) {
     pagesValidate.textContent = "Pages must be > 0";
-    formPages.style.border = "solid 1px red";
   } else {
     pagesValidate.textContent = "";
-    formPages.style.border = "solid 1px black";
   }
 }
 
@@ -85,7 +79,7 @@ function clearForm() {
   formRead.textContent = "";
 
   newBook_btn.style.display = "grid";
-  popupForm.style.display = "none";
+  popupForm.style.display = "grid";
 }
 
 function validate() {
@@ -131,7 +125,7 @@ function addBooksToShelf() {
   for (i = 0; i < myLibrary.length; i++) {
     var bookshelfItem = document.createElement("div");
     bookshelfItem.classList.add("bookshelfItem");
-    bookshelfItem.appendChild(document.createTextNode(myLibrary[i].title));
+    bookshelfItem.appendChild(document.createTextNode(""));
     if (myLibrary[i].pages < 100) {
       bookshelfItem.style.height = "1rem";
     } else if (myLibrary[i].pages < 200) {
