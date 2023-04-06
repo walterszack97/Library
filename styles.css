@@ -87,6 +87,7 @@ h2 {
   flex-direction: column;
   gap: 10px;
   box-shadow: var(--fancyShadow);
+  color: rgb(83, 76, 57);
 }
 .formSection {
   display: grid;
@@ -118,9 +119,15 @@ h2 {
 }
 .formAuthentify {
   grid-area: authentify;
+  font-size: 0.9rem;
+  justify-self: center;
 }
 .checkboxContainer {
-  align-self: center;
+  margin-left: 70px;
+}
+hr {
+  border-color: #c5c1ab;
+  margin-left: 70px;
 }
 #newBook_Form > div {
 }
