@@ -21,7 +21,7 @@ const pagesValidate = document.querySelector("#pagesValidate");
 //EVENT HANDLERS
 newBook_btn.addEventListener("click", (event) => {
   newBook_btn.style.display = "none";
-  popupForm.style.display = "block";
+  popupForm.style.display = "grid";
   formTitle.focus();
 });
 
