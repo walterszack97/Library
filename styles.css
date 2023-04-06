@@ -10,6 +10,8 @@ ul {
 }
 * {
   margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  letter-spacing: 2px;
 }
 body {
   height: 100vh;
@@ -83,7 +85,7 @@ h2 {
 #newBook_Form {
   display: flex;
   flex-direction: column;
-
+  gap: 10px;
   box-shadow: var(--fancyShadow);
 }
 .formSection {
@@ -112,6 +114,7 @@ h2 {
 }
 .formInput {
   grid-area: input;
+  width: 90%;
 }
 .formAuthentify {
   grid-area: authentify;
