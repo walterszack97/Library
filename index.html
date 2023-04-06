@@ -16,43 +16,51 @@
     <div id="mainContainer">
       <div class="newBookInput popup">
         <form id="newBook_Form" action="/script.js">
-          <div>
-            <label for="title">Title</label>
+          <div class="formSection" id="titleSection">
+            <label class="formLabel" id="textLabel" for="title">Title</label>
             <input
               type="text"
+              class="formInput"
               id="input_title"
               name="title"
               onblur="return validateTitle()"
               required
             />
-            <p id="titleValidate"></p>
+            <div class="icon"><img src="./imgs/nier.svg" alt="icon" /></div>
+            <p class="formAuthentify" id="titleValidate"></p>
           </div>
-          <div>
-            <label for="author">Author</label>
+          <div class="formSection">
+            <label class="formLabel" id="authorSection" for="author"
+              >Author</label
+            >
             <input
               type="text"
+              class="formInput"
               id="input_author"
               name="author"
               onblur="return validateAuthor()"
               required
             />
-            <p id="authorValidate"></p>
+            <div class="icon"><img src="./imgs/nier.svg" alt="icon" /></div>
+            <p class="formAuthentify" id="authorValidate"></p>
           </div>
-          <div>
-            <label for="pages">Pages</label>
+          <div class="formSection" id="pagesSection">
+            <label class="formLabel" id="pagesLabel" for="pages">Pages</label>
             <input
               type="number"
+              class="formInput"
               id="input_pages"
               name="pages"
               onblur="return validatePages()"
               required
             />
-            <p id="pagesValidate"></p>
+            <div class="icon"><img src="./imgs/nier.svg" alt="icon" /></div>
+            <p class="formAuthentify" id="pagesValidate"></p>
           </div>
-          <span>
-            <label for="read">Completed?</label>
+          <div class="checkboxContainer">
+            <label id="readLabel" for="read">Completed?</label>
             <input type="checkbox" id="input_read" name="read" value="yes" />
-          </span>
+          </div>
           <input
             id="submitBtn"
             type="submit"
