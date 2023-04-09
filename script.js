@@ -1,6 +1,8 @@
 //GET DOM ELEMENTS
 //header
 const newBook_btn = document.querySelector(".add_btn");
+const close_btn = document.querySelector("#closeBtn");
+const popup_btns = document.querySelector(".popupBtns");
 const newInput_popup = document.querySelector(".newBookInput");
 const popupForm = document.querySelector(".popup");
 const formSubmit = document.querySelector("#submitBtn");
@@ -22,7 +24,14 @@ const pagesValidate = document.querySelector("#pagesValidate");
 newBook_btn.addEventListener("click", (event) => {
   newBook_btn.style.display = "none";
   popupForm.style.display = "grid";
+  popup_btns.style.display = "flex";
   formTitle.focus();
+});
+close_btn.addEventListener("click", (event) => {
+  clearForm();
+  newBook_btn.style.display = "grid";
+  popupForm.style.display = "none";
+  popup_btns.style.display = "none";
 });
 
 //FUNCTIONS
@@ -78,9 +87,13 @@ function clearForm() {
   formAuthor.textContent = "";
   formPages.textContent = "";
   formRead.textContent = "";
+  titleValidate.textContent = "";
+  authorValidate.textContent = "";
+  pagesValidate.textContent = "";
 
   newBook_btn.style.display = "grid";
   popupForm.style.display = "none";
+  popup_btns.style.display = "none";
 }
 
 function validate() {

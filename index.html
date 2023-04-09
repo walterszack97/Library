@@ -62,12 +62,6 @@
             <input type="checkbox" id="input_read" name="read" value="yes" />
           </div>
           <hr />
-          <input
-            id="submitBtn"
-            type="submit"
-            value="Submit"
-            onclick="return validate()"
-          />
         </form>
       </div>
       <div id="listContainer">
@@ -77,6 +71,16 @@
         <div id="bookshelfItems"></div>
       </div>
     </div>
-    <div id="footer"></div>
+    <div id="footer">
+      <div class="popupBtns">
+        <input id="closeBtn" type="button" value="Close" />
+        <input
+          id="submitBtn"
+          type="submit"
+          value="Submit"
+          onclick="return validate()"
+        />
+      </div>
+    </div>
   </body>
 </html>
