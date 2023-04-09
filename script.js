@@ -10,6 +10,7 @@ const newBookForm = document.querySelector("#newBook_Form");
 //main
 const titleList = document.querySelector("#titleList");
 const bookshelfItems = document.querySelector("#bookshelfItems");
+const mainContainer = document.querySelector("#mainContainer");
 //title, author, pages, read
 const formTitle = document.querySelector("#input_title");
 const formAuthor = document.querySelector("#input_author");

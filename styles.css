@@ -3,6 +3,10 @@
     30px 0 0 -6px rgb(93, 89, 75, 0.3) inset,
     35px 0 0 -4px rgb(203, 199, 180) inset,
     40px 0 0 -6px rgb(93, 89, 75, 0.3) inset; /*offset x, y, blur, spread, color*/
+
+  --fancyShadowOutset: -20px 0 0 -4px #b3af9c,
+    -25px 0 0 -6px rgb(93, 89, 75, 0.3), -30px 0 0 -4px #b3af9c,
+    -50px 0 0 -6px rgb(93, 89, 75, 0.3);
 }
 
 ul {
@@ -53,11 +57,74 @@ h2 {
   border-style: solid;
   border-image-source: url(imgs/bgoutline.png);
 }
+.sortBtn {
+  font-size: 1.1rem;
+  font-weight: normal;
+  background-color: #c5c1ab;
+}
+.sortBtn:hover {
+  background-color: rgb(93, 89, 75);
+  color: #c5c1ab;
+}
 #listContainer {
   grid-area: listContainer;
+  display: flex;
+  flex-direction: column;
+  justify-self: center;
+  height: 80%;
+  width: 60%;
+  padding: 15px 0;
+  background-color: #c5c1ab;
+  border: 1px solid black;
+  box-shadow: var(--fancyShadowOutset);
+  color: rgb(83, 76, 57);
+}
+
+#titleList {
+  padding: 0 0;
+}
+.listBookTitle {
+  font-size: 1.2rem;
+  text-justify: center;
+  padding: 5px 0;
+  height: 30px;
+}
+.listBookTitle:hover {
+  background-clip: content-box;
+  background-color: rgb(83, 76, 57);
+  border-top: 1px solid rgb(83, 76, 57);
+  border-bottom: 1px solid rgb(83, 76, 57);
+  color: #c5c1ab;
 }
 #bookshelfContainer {
   grid-area: bookshelfContainer;
+}
+.bookshelfItem {
+  height: 1rem;
+  width: 30%;
+  background-color: white;
+  border: 1px solid black;
+  border-bottom: 0;
+}
+
+.formInput:focus ~ .icon {
+  display: grid;
+}
+.formInput:focus {
+  outline: none;
+  border: none;
+}
+input:not(:focus) {
+  outline: none;
+  border: none;
+}
+
+#footer {
+  grid-area: footer;
+}
+
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
 }
 
 .popup {
@@ -173,31 +240,7 @@ hr {
 #newBook_Form > div > p {
   color: rgb(113, 33, 33);
 }
-
-.bookshelfItem {
-  height: 1rem;
-  width: 30%;
-  background-color: white;
-  border: 1px solid black;
-  border-bottom: 0;
-}
-
-.formInput:focus ~ .icon {
-  display: grid;
-}
-.formInput:focus {
-  outline: none;
-  border: none;
-}
-input:not(:focus) {
-  outline: none;
-  border: none;
-}
-
-#footer {
-  grid-area: footer;
-}
-
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
+input[type="button"],
+input[type="submit"] {
+  color: rgb(83, 76, 57);
 }
