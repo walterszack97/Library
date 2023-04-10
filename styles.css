@@ -140,10 +140,35 @@ input:not(:focus) {
 #infoContainer {
   grid-area: infoContainer;
   justify-self: center;
+
+  padding: 0;
 }
 #bookInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: 100%;
 }
-
+.dataInfoDiv {
+  display: flex;
+  flex: 1;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+.dataIntro {
+}
+.dataInfo {
+}
+#infoHeader {
+  background-color: rgb(93, 89, 75);
+  color: #c5c1ab;
+  padding: 10px;
+}
+#infoHr {
+  border-color: #c5c1ab;
+  margin: 0 10px;
+}
 #footer {
   grid-area: footer;
   display: flex;
@@ -152,12 +177,6 @@ input:not(:focus) {
 
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
-}
-#alphaSortBtn {
-}
-#pagesSortBtn {
-}
-#completedSortBtn {
 }
 
 .popup {
@@ -226,7 +245,7 @@ input::-webkit-inner-spin-button {
 .checkboxContainer {
   margin-left: 70px;
 }
-hr {
+#popupHr {
   border-color: #c5c1ab;
   margin-left: 70px;
 }

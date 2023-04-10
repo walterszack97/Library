@@ -61,14 +61,35 @@
             <label id="readLabel" for="read">Completed?</label>
             <input type="checkbox" id="input_read" name="read" value="yes" />
           </div>
-          <hr />
+          <hr id="popupHr" />
         </form>
       </div>
       <div id="listContainer" class="contentContainer">
         <ul id="titleList"></ul>
       </div>
       <div id="infoContainer" class="contentContainer">
-        <div id="bookInfo"></div>
+        <div id="bookInfo">
+          <div id="infoHeader">Book Data</div>
+          <div class="dataInfoDiv">
+            <div class="dataIntro" id="titleIntro">TITLE:</div>
+            <div class="dataInfo" id="title">title</div>
+          </div>
+          <hr id="infoHr" />
+          <div class="dataInfoDiv">
+            <div class="dataIntro" id="titleIntro">AUTHOR:</div>
+            <div class="dataInfo" id="title">author</div>
+          </div>
+          <hr id="infoHr" />
+          <div class="dataInfoDiv">
+            <div class="dataIntro" id="titleIntro">PAGES:</div>
+            <div class="dataInfo" id="title">pages</div>
+          </div>
+          <hr id="infoHr" />
+          <div class="dataInfoDiv">
+            <div class="dataIntro" id="titleIntro">COMPLETED?:</div>
+            <div class="dataInfo" id="title">yes</div>
+          </div>
+        </div>
       </div>
     </div>
     <div id="footer">
