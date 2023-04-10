@@ -36,6 +36,7 @@ close_btn.addEventListener("click", (event) => {
   popup_btns.style.display = "none";
 });
 
+//SORT BUTTONS
 const alphaSortBtn = document.createElement("INPUT");
 alphaSortBtn.setAttribute("type", "button");
 alphaSortBtn.setAttribute("value", "Sort: Alphabetical");
@@ -172,7 +173,7 @@ function createLibraryList() {
     titleDiv.appendChild(iconDiv);
     titleDiv.appendChild(listBookTitle);
     listBookTitle.setAttribute("tabindex", "0");
-    listBookTitle.addEventListener("onclick", focus(), clearForm());
+    listBookTitle.addEventListener("onclick", focus());
     titleDiv.classList.add("titleDiv");
     titleDiv.setAttribute("tabindex", "0");
     titleDiv.addEventListener("onclick", focus());

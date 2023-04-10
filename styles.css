@@ -45,7 +45,7 @@ h2 {
   position: relative;
   grid-area: body;
 
-  grid-template-areas: "listContainer bookshelfContainer";
+  grid-template-areas: "listContainer infoContainer";
   grid-template-columns: 1fr 1fr;
   align-items: center;
 
@@ -66,17 +66,18 @@ h2 {
   background-color: rgb(93, 89, 75);
   color: #c5c1ab;
 }
-
-#listContainer {
-  grid-area: listContainer;
-  display: flex;
-  flex-direction: column;
-  justify-self: center;
+.contentContainer {
   height: 80%;
   width: 70%;
   padding: 15px 0;
   background-color: #c5c1ab;
   border: 1px solid black;
+}
+#listContainer {
+  grid-area: listContainer;
+  display: flex;
+  flex-direction: column;
+  justify-self: center;
   box-shadow: var(--fancyShadowOutset);
   color: rgb(83, 76, 57);
 }
@@ -124,17 +125,6 @@ h2 {
   color: #c5c1ab;
 }
 
-#bookshelfContainer {
-  grid-area: bookshelfContainer;
-}
-.bookshelfItem {
-  height: 1rem;
-  width: 30%;
-  background-color: white;
-  border: 1px solid black;
-  border-bottom: 0;
-}
-
 .formInput:focus ~ .icon {
   display: grid;
 }
@@ -147,8 +137,17 @@ input:not(:focus) {
   border: none;
 }
 
+#infoContainer {
+  grid-area: infoContainer;
+  justify-self: center;
+}
+#bookInfo {
+}
+
 #footer {
   grid-area: footer;
+  display: flex;
+  justify-content: center;
 }
 
 input::-webkit-inner-spin-button {
@@ -231,10 +230,7 @@ hr {
   border-color: #c5c1ab;
   margin-left: 70px;
 }
-#footer {
-  display: flex;
-  justify-content: center;
-}
+
 #submitBtn,
 #closeBtn {
   padding-left: 30px;
