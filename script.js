@@ -57,7 +57,7 @@ function addBookToLibrary() {
   myLibrary.push(newBook);
   newBookForm.reset();
   createLibraryList();
-  addBooksToShelf();
+  //addBooksToShelf();
 }
 
 //VALIDATE NEW BOOK FORM, SUBMIT AND CLEAR FORM
@@ -116,10 +116,24 @@ function createLibraryList() {
   }
 
   for (i = 0; i < myLibrary.length; i++) {
+    var titleDiv = document.createElement("div");
     var listBookTitle = document.createElement("li");
-    listBookTitle.classList.add("listBookTitle");
+    var listIcon = document.createElement("img");
+    var iconDiv = document.createElement("div");
+    listIcon.setAttribute("src", "././imgs/nier.svg");
+    listIcon.classList.add("listIcon");
+    iconDiv.appendChild(listIcon);
+    iconDiv.classList.add("iconDiv");
     listBookTitle.appendChild(document.createTextNode(myLibrary[i].title));
-    titleList.appendChild(listBookTitle);
+    listBookTitle.classList.add("listBookTitle");
+    titleDiv.appendChild(iconDiv);
+    titleDiv.appendChild(listBookTitle);
+    listBookTitle.setAttribute("tabindex", "0");
+    listBookTitle.addEventListener("onclick", focus());
+    titleDiv.classList.add("titleDiv");
+    titleDiv.setAttribute("tabindex", "0");
+    titleDiv.addEventListener("onclick", focus());
+    titleList.appendChild(titleDiv);
 
     console.log(
       myLibrary[i].title +
@@ -132,7 +146,7 @@ function createLibraryList() {
 }
 
 //BOOKSHELF TO GET A QUICK GLIMPSE OF BOOKS IN LIBRARY
-function addBooksToShelf() {
+/*function addBooksToShelf() {
   while (bookshelfItems.hasChildNodes()) {
     bookshelfItems.removeChild(bookshelfItems.firstChild);
   }
@@ -161,4 +175,4 @@ function addBooksToShelf() {
 
     bookshelfItems.appendChild(bookshelfItem);
   }
-}
+}*/
