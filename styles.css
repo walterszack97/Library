@@ -154,6 +154,12 @@ input:not(:focus) {
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
 }
+#alphaSortBtn {
+}
+#pagesSortBtn {
+}
+#completedSortBtn {
+}
 
 .popup {
   display: none;

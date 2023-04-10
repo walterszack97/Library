@@ -8,6 +8,7 @@ const popupForm = document.querySelector(".popup");
 const formSubmit = document.querySelector("#submitBtn");
 const newBookForm = document.querySelector("#newBook_Form");
 //main
+const listContainer = document.querySelector("#listContainer");
 const titleList = document.querySelector("#titleList");
 const bookshelfItems = document.querySelector("#bookshelfItems");
 const mainContainer = document.querySelector("#mainContainer");
@@ -33,6 +34,40 @@ close_btn.addEventListener("click", (event) => {
   newBook_btn.style.display = "grid";
   popupForm.style.display = "none";
   popup_btns.style.display = "none";
+});
+
+const alphaSortBtn = document.createElement("INPUT");
+alphaSortBtn.setAttribute("type", "button");
+alphaSortBtn.setAttribute("value", "Sort: Alphabetical");
+alphaSortBtn.setAttribute("class", "sortBtn");
+alphaSortBtn.setAttribute("id", "alphaSortBtn");
+const completedSortBtn = document.createElement("INPUT");
+completedSortBtn.setAttribute("type", "button");
+completedSortBtn.setAttribute("value", "Sort: Completed");
+completedSortBtn.setAttribute("class", "sortBtn");
+completedSortBtn.setAttribute("id", "completedSortBtn");
+const pagesSortBtn = document.createElement("INPUT");
+pagesSortBtn.setAttribute("type", "button");
+pagesSortBtn.setAttribute("value", "Sort: Pages");
+pagesSortBtn.setAttribute("class", "sortBtn");
+pagesSortBtn.setAttribute("id", "pagesSortBtn");
+
+listContainer.prepend(alphaSortBtn);
+
+alphaSortBtn.addEventListener("click", (event) => {
+  listContainer.prepend(completedSortBtn);
+  alphaSortBtn.remove();
+  createLibraryList();
+});
+pagesSortBtn.addEventListener("click", (event) => {
+  listContainer.prepend(alphaSortBtn);
+  pagesSortBtn.remove();
+  createLibraryList();
+});
+completedSortBtn.addEventListener("click", (event) => {
+  listContainer.prepend(pagesSortBtn);
+  completedSortBtn.remove();
+  createLibraryList();
 });
 
 //FUNCTIONS
@@ -115,6 +150,14 @@ function createLibraryList() {
     titleList.removeChild(titleList.firstChild);
   }
 
+  if (listContainer.firstElementChild.id == "alphaSortBtn") {
+    sortAlpha();
+  } else if (listContainer.firstElementChild.id == "completedSortBtn") {
+    sortCompleted();
+  } else {
+    sortPages();
+  }
+
   for (i = 0; i < myLibrary.length; i++) {
     var titleDiv = document.createElement("div");
     var listBookTitle = document.createElement("li");
@@ -129,20 +172,38 @@ function createLibraryList() {
     titleDiv.appendChild(iconDiv);
     titleDiv.appendChild(listBookTitle);
     listBookTitle.setAttribute("tabindex", "0");
-    listBookTitle.addEventListener("onclick", focus());
+    listBookTitle.addEventListener("onclick", focus(), clearForm());
     titleDiv.classList.add("titleDiv");
     titleDiv.setAttribute("tabindex", "0");
     titleDiv.addEventListener("onclick", focus());
     titleList.appendChild(titleDiv);
 
-    console.log(
-      myLibrary[i].title +
-        "\n" +
-        myLibrary[i].author +
-        "\n" +
-        myLibrary[i].haveRead
-    );
+    console.log(listContainer.firstElementChild.id);
   }
+}
+
+function sortAlpha() {
+  myLibrary.sort((a, b) => {
+    let ta = a.title.toLowerCase(),
+      tb = b.title.toLowerCase();
+    if (ta < tb) {
+      return -1;
+    }
+    if (ta > tb) {
+      return 1;
+    }
+    return 0;
+  });
+}
+function sortPages() {
+  myLibrary.sort((a, b) => {
+    return a.pages - b.pages;
+  });
+}
+function sortCompleted() {
+  myLibrary.sort((a, b) => {
+    return b.haveRead - a.haveRead;
+  });
 }
 
 //BOOKSHELF TO GET A QUICK GLIMPSE OF BOOKS IN LIBRARY
