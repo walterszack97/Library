@@ -59,6 +59,7 @@ h2 {
 }
 .sortBtn {
   font-size: 1.1rem;
+  padding: 10px;
   font-weight: normal;
   background-color: #c5c1ab;
 }
@@ -69,7 +70,7 @@ h2 {
 .contentContainer {
   height: 80%;
   width: 70%;
-  padding: 15px 0;
+  padding: 0;
   background-color: #c5c1ab;
   border: 1px solid black;
 }
@@ -156,10 +157,7 @@ input:not(:focus) {
   align-items: center;
   padding: 10px;
 }
-.dataIntro {
-}
-.dataInfo {
-}
+
 #infoHeader {
   background-color: rgb(93, 89, 75);
   color: #c5c1ab;

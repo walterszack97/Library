@@ -21,6 +21,13 @@ const formRead = document.querySelector("#input_read");
 const titleValidate = document.querySelector("#titleValidate");
 const authorValidate = document.querySelector("#authorValidate");
 const pagesValidate = document.querySelector("#pagesValidate");
+//Book data box
+const dataTitle = document.querySelector("#title");
+const dataAuthor = document.querySelector("#author");
+const dataPages = document.querySelector("#pages");
+const dataCompleted = document.querySelector("#completed");
+const listBookTitle = document.querySelector(".listBookTitle");
+//#titleIntro #title #authorIntro #author #pagesIntro #Pages #completedIntro #completed
 
 //EVENT HANDLERS
 newBook_btn.addEventListener("click", (event) => {
@@ -170,16 +177,21 @@ function createLibraryList() {
     iconDiv.classList.add("iconDiv");
     listBookTitle.appendChild(document.createTextNode(myLibrary[i].title));
     listBookTitle.classList.add("listBookTitle");
+    listBookTitle.setAttribute("id", "listBookTitle");
     titleDiv.appendChild(iconDiv);
     titleDiv.appendChild(listBookTitle);
     listBookTitle.setAttribute("tabindex", "0");
     listBookTitle.addEventListener("onclick", focus());
+    listBookTitle.setAttribute("listTitle", myLibrary[i].title);
+    listBookTitle.setAttribute("listAuthor", myLibrary[i].author);
+    listBookTitle.setAttribute("listPages", myLibrary[i].pages);
+    listBookTitle.setAttribute("listCompleted", myLibrary[i].haveRead);
     titleDiv.classList.add("titleDiv");
     titleDiv.setAttribute("tabindex", "0");
     titleDiv.addEventListener("onclick", focus());
     titleList.appendChild(titleDiv);
 
-    console.log(listContainer.firstElementChild.id);
+    console.log(myLibrary.title);
   }
 }
 
@@ -206,6 +218,19 @@ function sortCompleted() {
     return b.haveRead - a.haveRead;
   });
 }
+
+document.body.addEventListener("click", function (event) {
+  if (event.target.id == "listBookTitle") {
+    dataTitle.textContent = event.target.getAttribute("listtitle");
+    dataAuthor.textContent = event.target.getAttribute("listauthor");
+    dataPages.textContent = event.target.getAttribute("listpages");
+    dataCompleted.textContent = event.target.getAttribute("listcompleted");
+  }
+});
+
+//EVent to display book info in the data container on click
+
+//const titleSelector = document.querySelector(".titleDiv li");
 
 //BOOKSHELF TO GET A QUICK GLIMPSE OF BOOKS IN LIBRARY
 /*function addBooksToShelf() {
