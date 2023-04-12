@@ -69,7 +69,16 @@
       </div>
       <div id="infoContainer" class="contentContainer">
         <div id="bookInfo">
-          <div id="infoHeader">Book Data</div>
+          <div id="infoHeaderDiv">
+            <div id="infoHeader">Book Data</div>
+            <button id="editBtn" type="submit">
+              <img
+                id="pencilIcon"
+                src="./imgs/pencilIcon.svg"
+                alt="edit icon"
+              />
+            </button>
+          </div>
           <div class="dataInfoDiv">
             <div class="dataIntro" id="titleIntro">TITLE:</div>
             <div class="dataInfo" id="title"></div>
@@ -87,7 +96,7 @@
           <hr id="infoHr" />
           <div class="dataInfoDiv">
             <div class="dataIntro" id="completedIntro">COMPLETED?:</div>
-            <div class="dataInfo" id="completed">yes</div>
+            <div class="dataInfo" id="completed"></div>
           </div>
         </div>
       </div>

@@ -27,20 +27,16 @@ const dataAuthor = document.querySelector("#author");
 const dataPages = document.querySelector("#pages");
 const dataCompleted = document.querySelector("#completed");
 const listBookTitle = document.querySelector(".listBookTitle");
-//#titleIntro #title #authorIntro #author #pagesIntro #Pages #completedIntro #completed
+const editBtn = document.querySelector("#editBtn");
 
 //EVENT HANDLERS
+let toBeEdited;
 newBook_btn.addEventListener("click", (event) => {
-  newBook_btn.style.display = "none";
-  popupForm.style.display = "grid";
-  popup_btns.style.display = "flex";
-  formTitle.focus();
+  toBeEdited = false;
+  openPopup();
 });
-close_btn.addEventListener("click", (event) => {
-  clearForm();
-  newBook_btn.style.display = "grid";
-  popupForm.style.display = "none";
-  popup_btns.style.display = "none";
+close_btn.addEventListener("click", () => {
+  closePopup();
 });
 
 //SORT BUTTONS
@@ -90,7 +86,6 @@ function Book(title, author, pages, haveRead) {
 }
 
 function addBookToLibrary() {
-  event.preventDefault();
   let title = formTitle.value;
   let author = formAuthor.value;
   let pages = formPages.value;
@@ -99,8 +94,38 @@ function addBookToLibrary() {
   newBook = new Book(title, author, pages, read);
   myLibrary.push(newBook);
   newBookForm.reset();
+  updateInfoContainer(title, author, pages, read);
   createLibraryList();
-  //addBooksToShelf();
+}
+function addEditedBookToLibrary() {
+  let title = formTitle.value;
+  let author = formAuthor.value;
+  let pages = formPages.value;
+  let read = formRead.checked;
+
+  newBook = new Book(title, author, pages, read);
+  myLibrary.splice(currentIndex, 1, newBook); //replace old book in array with edited one
+
+  newBookForm.reset();
+  updateInfoContainer(title, author, pages, read);
+  createLibraryList();
+}
+
+//OPEN POPUP
+function openPopup() {
+  newBook_btn.disabled = true;
+  editBtn.disabled = true;
+  newBook_btn.style.display = "none";
+  popupForm.style.display = "grid";
+  popup_btns.style.display = "flex";
+  formTitle.focus();
+}
+//CLOSE POPUP
+function closePopup() {
+  clearForm();
+  newBook_btn.style.display = "grid";
+  popupForm.style.display = "none";
+  popup_btns.style.display = "none";
 }
 
 //VALIDATE NEW BOOK FORM, SUBMIT AND CLEAR FORM
@@ -127,10 +152,10 @@ function validatePages() {
 }
 
 function clearForm() {
-  formTitle.textContent = "";
-  formAuthor.textContent = "";
-  formPages.textContent = "";
-  formRead.textContent = "";
+  formTitle.value = "";
+  formAuthor.value = "";
+  formPages.value = "";
+  formRead.checked = false;
   titleValidate.textContent = "";
   authorValidate.textContent = "";
   pagesValidate.textContent = "";
@@ -138,6 +163,8 @@ function clearForm() {
   newBook_btn.style.display = "grid";
   popupForm.style.display = "none";
   popup_btns.style.display = "none";
+  newBook_btn.disabled = false;
+  editBtn.disabled = false;
 }
 
 function validate() {
@@ -147,8 +174,14 @@ function validate() {
     validatePages();
     return false;
   } else {
-    addBookToLibrary();
-    clearForm();
+    //editContinue = true;
+    if (toBeEdited == false) {
+      addBookToLibrary();
+      clearForm();
+    } else if (toBeEdited == true) {
+      addEditedBookToLibrary();
+      clearForm();
+    }
   }
 }
 
@@ -171,6 +204,7 @@ function createLibraryList() {
     var listBookTitle = document.createElement("li");
     var listIcon = document.createElement("img");
     var iconDiv = document.createElement("div");
+    var indexNum = i;
     listIcon.setAttribute("src", "././imgs/nier.svg");
     listIcon.classList.add("listIcon");
     iconDiv.appendChild(listIcon);
@@ -186,15 +220,20 @@ function createLibraryList() {
     listBookTitle.setAttribute("listAuthor", myLibrary[i].author);
     listBookTitle.setAttribute("listPages", myLibrary[i].pages);
     listBookTitle.setAttribute("listCompleted", myLibrary[i].haveRead);
+    listBookTitle.setAttribute("arrayIndex", indexNum);
     titleDiv.classList.add("titleDiv");
     titleDiv.setAttribute("tabindex", "0");
+    titleDiv.setAttribute("id", "titleDiv");
     titleDiv.addEventListener("onclick", focus());
     titleList.appendChild(titleDiv);
-
-    console.log(myLibrary.title);
+  }
+  console.clear();
+  for (i = 0; i < myLibrary.length; i++) {
+    console.log(myLibrary[i].title);
   }
 }
 
+//SORT MYLIBRARY ARRAY
 function sortAlpha() {
   myLibrary.sort((a, b) => {
     let ta = a.title.toLowerCase(),
@@ -219,18 +258,37 @@ function sortCompleted() {
   });
 }
 
+//Apply clicked button title information to the information container
 document.body.addEventListener("click", function (event) {
   if (event.target.id == "listBookTitle") {
     dataTitle.textContent = event.target.getAttribute("listtitle");
     dataAuthor.textContent = event.target.getAttribute("listauthor");
     dataPages.textContent = event.target.getAttribute("listpages");
     dataCompleted.textContent = event.target.getAttribute("listcompleted");
+    currentIndex = parseInt(event.target.getAttribute("arrayindex"));
+    //selectedTitle = event.target.getAttribute("listtitle");
   }
 });
 
-//EVent to display book info in the data container on click
+//Event to display book info in the data container on click
+editBtn.addEventListener("click", () => {
+  toBeEdited = true;
+  if (typeof currentIndex == "number") {
+    alert(currentIndex);
+    formTitle.value = myLibrary[currentIndex].title;
+    formAuthor.value = myLibrary[currentIndex].author;
+    formPages.value = myLibrary[currentIndex].pages;
+    formRead.checked = myLibrary[currentIndex].haveRead;
+    openPopup();
+  }
+});
 
-//const titleSelector = document.querySelector(".titleDiv li");
+function updateInfoContainer(title, author, pages, read) {
+  dataTitle.textContent = title;
+  dataAuthor.textContent = author;
+  dataPages.textContent = pages;
+  dataCompleted.textContent = read;
+}
 
 //BOOKSHELF TO GET A QUICK GLIMPSE OF BOOKS IN LIBRARY
 /*function addBooksToShelf() {

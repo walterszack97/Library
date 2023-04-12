@@ -70,6 +70,7 @@ h2 {
 .contentContainer {
   height: 80%;
   width: 70%;
+  min-width: 400px;
   padding: 0;
   background-color: #c5c1ab;
   border: 1px solid black;
@@ -82,6 +83,18 @@ h2 {
   box-shadow: var(--fancyShadowOutset);
   color: rgb(83, 76, 57);
   word-break: break-all;
+  overflow: auto;
+}
+#listContainer::-webkit-scrollbar {
+  height: 3px;
+  width: 15px;
+}
+#listContainer::-webkit-scrollbar-track-piece {
+  background-color: #b3af9c;
+}
+#listContainer::-webkit-scrollbar-thumb:vertical {
+  background-color: rgb(83, 76, 57);
+  height: 30px;
 }
 .iconDiv {
   display: none;
@@ -160,10 +173,21 @@ input:not(:focus) {
 .dataInfo {
   word-break: break-all;
 }
+#infoHeaderDiv {
+  display: flex;
+  justify-content: space-between;
+  background-color: rgb(93, 89, 75);
+}
 #infoHeader {
   background-color: rgb(93, 89, 75);
   color: #c5c1ab;
   padding: 10px;
+}
+#editBtn {
+  background-color: rgb(93, 89, 75);
+}
+#pencilIcon {
+  height: 30px;
 }
 #infoHr {
   border-color: #c5c1ab;
@@ -292,4 +316,34 @@ input::-webkit-inner-spin-button {
 input[type="button"],
 input[type="submit"] {
   color: rgb(83, 76, 57);
+}
+
+@media screen and (max-width: 830px) {
+  #mainContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+    height: 80vh;
+    min-height: 700px;
+    min-width: none;
+  }
+
+  body {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: center;
+
+    min-width: 200px;
+  }
+  header {
+    padding: 20px;
+    margin: 0;
+  }
+  .contentContainer {
+    max-height: 300px;
+    min-height: 200px;
+    min-width: 380px;
+  }
 }
