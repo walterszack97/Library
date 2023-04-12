@@ -31,15 +31,38 @@ body {
 header {
   grid-area: header;
   padding: 30px;
-  display: grid;
-  justify-content: center;
-  margin-bottom: 20px;
+  display: flex;
+  justify-items: center;
+  align-items: center;
+
   display: grid;
 }
 h2 {
+  color: rgb(45, 41, 32);
   justify-content: center;
   display: grid;
 }
+.add_btn {
+  color: rgb(45, 41, 32);
+  padding-left: 30px;
+  text-align: left;
+  border: none;
+  width: 150px;
+  height: 30px;
+  background-image: url(./imgs/addIconDark.svg);
+  background-position: left 5px center;
+  background-repeat: no-repeat;
+  background-size: 20px;
+  background-color: rgba(112, 107, 91, 0.2);
+  font-size: 1.2rem;
+}
+.add_btn:hover {
+  border: none;
+  color: #c5c1ab;
+  background-color: rgb(93, 89, 75);
+  background-image: url(./imgs/addIconLight.svg);
+}
+
 #mainContainer {
   display: grid;
   position: relative;
@@ -83,7 +106,6 @@ h2 {
   box-shadow: var(--fancyShadowOutset);
   color: rgb(83, 76, 57);
   word-break: break-all;
-  overflow: auto;
 }
 #listContainer::-webkit-scrollbar {
   height: 3px;

@@ -274,7 +274,6 @@ document.body.addEventListener("click", function (event) {
 editBtn.addEventListener("click", () => {
   toBeEdited = true;
   if (typeof currentIndex == "number") {
-    alert(currentIndex);
     formTitle.value = myLibrary[currentIndex].title;
     formAuthor.value = myLibrary[currentIndex].author;
     formPages.value = myLibrary[currentIndex].pages;
