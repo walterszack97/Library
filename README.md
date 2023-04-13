@@ -15,3 +15,7 @@ This web-app allows you to keep track of your book collection by adding and edit
 - HTML
 - CSS
 - JavaScript
+
+### Icons
+
+Icons supplied from [SVGrepo](https://www.svgrepo.com/svg/489804/trash)
