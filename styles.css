@@ -43,6 +43,9 @@ h2 {
   display: grid;
 }
 .add_btn {
+  display: grid;
+  justify-content: center;
+  align-items: center;
   color: rgb(45, 41, 32);
   padding-left: 30px;
   text-align: left;
