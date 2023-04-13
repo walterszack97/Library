@@ -234,6 +234,7 @@ function createLibraryList() {
     titleDiv.classList.add("titleDiv");
     titleDiv.setAttribute("tabindex", "0");
     titleDiv.setAttribute("id", "titleDiv");
+    titleDiv.setAttribute("divIndex", i);
     titleDiv.addEventListener("onclick", focus());
     titleList.appendChild(titleDiv);
   }
@@ -294,11 +295,10 @@ editBtn.addEventListener("click", () => {
 //Delete book info in data container on click
 trashBtn.addEventListener("click", () => {
   if (typeof currentIndex == "number") {
-    let currentElement = document.querySelector(
-      `[arrayIndex="${currentIndex}"]`
-    );
+    let currentElement = document.querySelector(`[divIndex="${currentIndex}"]`);
     currentElement.remove();
     myLibrary.splice(currentIndex, 1);
+    createLibraryList();
     dataTitle.textContent = "";
     dataAuthor.textContent = "";
     dataPages.textContent = "";
