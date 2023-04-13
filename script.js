@@ -95,8 +95,11 @@ function addBookToLibrary() {
   newBook = new Book(title, author, pages, read);
   myLibrary.push(newBook);
   newBookForm.reset();
-  updateInfoContainer(title, author, pages, read);
+
   createLibraryList();
+  let selectedTitle = document.querySelector(`[listtitle="${title}"]`);
+  selectedTitle.click();
+  selectedTitle.focus();
 }
 function addEditedBookToLibrary() {
   let title = formTitle.value;
@@ -108,8 +111,11 @@ function addEditedBookToLibrary() {
   myLibrary.splice(currentIndex, 1, newBook); //replace old book in array with edited one
   currentIndex = null;
   newBookForm.reset();
-  updateInfoContainer(title, author, pages, read);
+
   createLibraryList();
+  let selectedTitle = document.querySelector(`[listtitle="${title}"]`);
+  selectedTitle.click();
+  selectedTitle.focus();
 }
 
 //OPEN POPUP
@@ -301,13 +307,17 @@ trashBtn.addEventListener("click", () => {
   }
 });
 
-function updateInfoContainer(title, author, pages, read) {
-  dataTitle.textContent = title;
-  dataAuthor.textContent = author;
-  dataPages.textContent = pages;
-  dataCompleted.textContent = read;
+function populateLibrary() {
+  newBook1 = new Book("S King", "It", 1600, true);
+  myLibrary.push(newBook1);
+  newBook2 = new Book("J Steinbeck", "East of Eden", 1200, true);
+  myLibrary.push(newBook2);
+  newBook3 = new Book("G Martin", "ASOIAF", 800, false);
+  myLibrary.push(newBook3);
+  createLibraryList();
 }
 
+populateLibrary();
 //BOOKSHELF TO GET A QUICK GLIMPSE OF BOOKS IN LIBRARY
 /*function addBooksToShelf() {
   while (bookshelfItems.hasChildNodes()) {
