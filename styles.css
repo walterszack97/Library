@@ -134,6 +134,7 @@ h2 {
 }
 .titleDiv {
   display: flex;
+  /* justify-content: space-between;*/
 }
 .listBookTitle {
   display: flex;
@@ -205,10 +206,10 @@ input:not(:focus) {
   color: #c5c1ab;
   padding: 10px;
 }
-#editBtn {
+.infoBtns {
   background-color: rgb(93, 89, 75);
 }
-#pencilIcon {
+.infoIcons {
   height: 30px;
 }
 #infoHr {

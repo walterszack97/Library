@@ -28,6 +28,7 @@ const dataPages = document.querySelector("#pages");
 const dataCompleted = document.querySelector("#completed");
 const listBookTitle = document.querySelector(".listBookTitle");
 const editBtn = document.querySelector("#editBtn");
+const trashBtn = document.querySelector("#trashBtn");
 
 //EVENT HANDLERS
 let toBeEdited;
@@ -105,7 +106,7 @@ function addEditedBookToLibrary() {
 
   newBook = new Book(title, author, pages, read);
   myLibrary.splice(currentIndex, 1, newBook); //replace old book in array with edited one
-
+  currentIndex = null;
   newBookForm.reset();
   updateInfoContainer(title, author, pages, read);
   createLibraryList();
@@ -115,6 +116,7 @@ function addEditedBookToLibrary() {
 function openPopup() {
   newBook_btn.disabled = true;
   editBtn.disabled = true;
+  trashBtn.disabled = true;
   newBook_btn.style.display = "none";
   popupForm.style.display = "grid";
   popup_btns.style.display = "flex";
@@ -165,6 +167,7 @@ function clearForm() {
   popup_btns.style.display = "none";
   newBook_btn.disabled = false;
   editBtn.disabled = false;
+  trashBtn.disabled = false;
 }
 
 function validate() {
@@ -205,6 +208,7 @@ function createLibraryList() {
     var listIcon = document.createElement("img");
     var iconDiv = document.createElement("div");
     var indexNum = i;
+
     listIcon.setAttribute("src", "././imgs/nier.svg");
     listIcon.classList.add("listIcon");
     iconDiv.appendChild(listIcon);
@@ -279,6 +283,21 @@ editBtn.addEventListener("click", () => {
     formPages.value = myLibrary[currentIndex].pages;
     formRead.checked = myLibrary[currentIndex].haveRead;
     openPopup();
+  }
+});
+//Delete book info in data container on click
+trashBtn.addEventListener("click", () => {
+  if (typeof currentIndex == "number") {
+    let currentElement = document.querySelector(
+      `[arrayIndex="${currentIndex}"]`
+    );
+    currentElement.remove();
+    myLibrary.splice(currentIndex, 1);
+    dataTitle.textContent = "";
+    dataAuthor.textContent = "";
+    dataPages.textContent = "";
+    dataCompleted.textContent = "";
+    currentIndex = null;
   }
 });
 
