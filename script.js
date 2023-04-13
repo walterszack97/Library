@@ -246,6 +246,7 @@ function createLibraryList() {
 
 //SORT MYLIBRARY ARRAY
 function sortAlpha() {
+  currentIndex = null;
   myLibrary.sort((a, b) => {
     let ta = a.title.toLowerCase(),
       tb = b.title.toLowerCase();
@@ -259,11 +260,13 @@ function sortAlpha() {
   });
 }
 function sortPages() {
+  currentIndex = null;
   myLibrary.sort((a, b) => {
     return a.pages - b.pages;
   });
 }
 function sortCompleted() {
+  currentIndex = null;
   myLibrary.sort((a, b) => {
     return b.haveRead - a.haveRead;
   });
@@ -308,13 +311,16 @@ trashBtn.addEventListener("click", () => {
 });
 
 function populateLibrary() {
-  newBook1 = new Book("S King", "It", 1600, true);
+  newBook1 = new Book("It", "Stephen King", 1338, true);
   myLibrary.push(newBook1);
-  newBook2 = new Book("J Steinbeck", "East of Eden", 1200, true);
+  newBook2 = new Book("East of Eden", "John Steinbeck", 704, true);
   myLibrary.push(newBook2);
-  newBook3 = new Book("G Martin", "ASOIAF", 800, false);
+  newBook3 = new Book("A Game of Thrones", "George R. R. Martin", 697, false);
   myLibrary.push(newBook3);
+  newBook4 = new Book("Goodnight Punpun: Vol 1", "Inio Asano", 431, true);
+  myLibrary.push(newBook4);
   createLibraryList();
+  currentIndex = null;
 }
 
 populateLibrary();
